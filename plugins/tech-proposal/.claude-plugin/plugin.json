@@ -1,0 +1,11 @@
+{
+  "name": "tech-proposal",
+  "version": "1.0.0",
+  "description": "AI应用技术方案架构师。从需求对齐→技术调研→方案生成→审查→迭代优化，全流程产出可落地的技术方案报告。",
+  "author": {
+    "name": "shaoeric"
+  },
+  "repository": "https://github.com/shaoeric/SKILLS",
+  "license": "MIT",
+  "keywords": ["tech-proposal", "solution-design", "architecture", "技术方案"]
+}
