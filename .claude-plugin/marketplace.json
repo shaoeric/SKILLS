@@ -1,0 +1,13 @@
+{
+  "name": "shaoeric-skills",
+  "description": "AI应用技术方案技能集 — 包含 tech-proposal 等实用技能",
+  "plugins": [
+    {
+      "name": "tech-proposal",
+      "description": "AI应用技术方案架构师。从需求对齐→技术调研→方案生成→审查→迭代优化，全流程产出可落地的技术方案报告。",
+      "category": "development",
+      "source": "./plugins/tech-proposal",
+      "tags": ["tech-proposal", "solution-design", "architecture", "技术方案", "架构设计"]
+    }
+  ]
+}
