@@ -1,6 +1,13 @@
 {
   "name": "shaoeric-skills",
-  "description": "AI应用技术方案技能集 — 包含 tech-proposal 等实用技能",
+  "owner": {
+    "name": "shaoeric",
+    "email": ""
+  },
+  "metadata": {
+    "description": "AI应用技术方案技能集 — 包含 tech-proposal 等实用技能",
+    "version": "1.0.0"
+  },
   "plugins": [
     {
       "name": "tech-proposal",
