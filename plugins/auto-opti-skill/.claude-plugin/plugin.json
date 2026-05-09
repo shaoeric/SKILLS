@@ -1,0 +1,11 @@
+{
+  "name": "auto-opti-skill",
+  "version": "1.0.0",
+  "description": "数据驱动的全自动 prompt/skill 优化系统。通过 LLM-as-Judge 评估 Agent 输出与期望输出的匹配度，对 skill 进行两阶段优化——Phase 1 交互式诊断（人在回路）+ Phase 2 全自动爬山优化。内置反过拟合机制确保泛化性。",
+  "author": {
+    "name": "shaoeric"
+  },
+  "repository": "https://github.com/shaoeric/SKILLS",
+  "license": "MIT",
+  "keywords": ["auto-opti-skill", "prompt-optimization", "skill-optimization", "data-driven", "LLM-as-Judge", "反过拟合"]
+}

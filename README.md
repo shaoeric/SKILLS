@@ -1,12 +1,14 @@
 # shaoeric-skills
 
-AI 应用技术方案技能集 — 包含 `tech-proposal` 等实用技能，适用于 **Claude Code**。
+AI 应用技能集，包含 `tech-proposal` 与 `auto-opti-skill` 两个实用插件，适用于 **Claude Code**。
 
 ## 包含的技能
 
 | 技能 | 说明 | 触发方式 |
 |------|------|----------|
 | **tech-proposal** | AI 应用技术方案架构师。从需求对齐 → 技术调研 → 方案生成 → 审查 → 迭代优化，全流程产出可落地的技术方案报告。 | `/tech-proposal` 或自然语言描述 |
+| **auto-opti-skill** | 数据驱动的全自动 prompt/skill 优化系统。通过 LLM-as-Judge 评估输出质量，支持「Phase 1 交互式诊断 + Phase 2 自动爬山优化」，并内置反过拟合机制。 | `/auto-opti-skill` 或自然语言触发 |
+
 
 ## 环境要求
 
@@ -30,8 +32,16 @@ AI 应用技术方案技能集 — 包含 `tech-proposal` 等实用技能，适�
 
 ### 2. 安装插件
 
+安装 `tech-proposal`：
+
 ```
 /plugin install tech-proposal
+```
+
+安装 `auto-opti-skill`：
+
+```
+/plugin install auto-opti-skill
 ```
 
 ### 3. 验证安装
@@ -40,7 +50,7 @@ AI 应用技术方案技能集 — 包含 `tech-proposal` 等实用技能，适�
 /plugin list
 ```
 
-如果看到 `tech-proposal` 出现在列表中，说明安装成功。
+如果看到 `tech-proposal` 与 `auto-opti-skill` 出现在列表中，说明安装成功。
 
 > **备选方案：本地安装**
 >
@@ -52,6 +62,7 @@ AI 应用技术方案技能集 — 包含 `tech-proposal` 等实用技能，适�
 > ```
 > /plugin marketplace add ./SKILLS
 > /plugin install tech-proposal
+> /plugin install auto-opti-skill
 > ```
 
 ## 使用方式
@@ -64,6 +75,12 @@ AI 应用技术方案技能集 — 包含 `tech-proposal` 等实用技能，适�
 /tech-proposal
 ```
 
+或：
+
+```
+/auto-opti-skill
+```
+
 ### 通过自然语言触发
 
 直接描述你的需求，技能会自动激活：
@@ -72,9 +89,16 @@ AI 应用技术方案技能集 — 包含 `tech-proposal` 等实用技能，适�
 帮我设计一个智能客服系统的技术方案
 ```
 
-**触发关键词**：技术方案、架构设计、方案设计、tech proposal、solution design、architecture design
+```
+帮我自动优化这个 skill 的提示词，提高任务准确率
+```
+
+**tech-proposal 触发关键词**：技术方案、架构设计、方案设计、tech proposal、solution design、architecture design  
+**auto-opti-skill 触发关键词**：自动优化 skill、skill 调优、prompt 优化、提高准确率、auto optimize、auto-opti
 
 ## 工作流程
+
+`tech-proposal`：
 
 ```
 需求对齐 → 技术调研 → 方案生成 → 方案审查 → 迭代优化
@@ -86,6 +110,13 @@ AI 应用技术方案技能集 — 包含 `tech-proposal` 等实用技能，适�
 4. **Phase 3 — 方案审查**：多维度审查方案质量
 5. **Phase 4 — 迭代优化**：根据审查意见持续改进方案
 
+`auto-opti-skill`：
+
+```
+数据准备(train/val/test) → 首轮评估(LLM-as-Judge) → 交互式诊断(Phase 1)
+→ 自动迭代优化(Phase 2) → test 留出集验证
+```
+
 ## 项目结构
 
 ```
@@ -93,14 +124,23 @@ SKILLS/
 ├── .claude-plugin/
 │   └── marketplace.json          # Marketplace 配置
 ├── plugins/
-│   └── tech-proposal/            # tech-proposal 插件
+│   ├── tech-proposal/            # tech-proposal 插件
+│   │   ├── .claude-plugin/
+│   │   │   └── plugin.json       # 插件元信息
+│   │   └── skills/
+│   │       └── tech-proposal/
+│   │           ├── SKILL.md      # 技能定义
+│   │           ├── agents/       # Agent 配置
+│   │           └── references/   # 参考模板
+│   └── auto-opti-skill/          # auto-opti-skill 插件
 │       ├── .claude-plugin/
 │       │   └── plugin.json       # 插件元信息
 │       └── skills/
-│           └── tech-proposal/
+│           └── auto-opti-skill/
 │               ├── SKILL.md      # 技能定义
-│               ├── agents/       # Agent 配置
-│               └── references/   # 参考模板
+│               ├── agents/       # 子 Agent 配置
+│               ├── references/   # 评估与反过拟合参考
+│               └── templates/    # 数据样例模板
 └── .gitignore
 ```
 
